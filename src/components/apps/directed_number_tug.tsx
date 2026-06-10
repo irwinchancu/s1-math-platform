@@ -97,9 +97,9 @@ export default function DirectedNumberTug() {
       let leftPct = ((i - MIN) / (MAX - MIN)) * 100;
       
       ticks.push(
-        <div key={i} className="absolute flex flex-col items-center" style={{ left: \`\${leftPct}%\`, transform: 'translateX(-50%)' }}>
-          <div className={\`h-4 w-0.5 \${isAxis ? 'bg-sky-400 h-6' : 'bg-slate-600'}\`}></div>
-          {i % 5 === 0 && <span className={\`text-xs mt-1 \${isAxis ? 'text-sky-400 font-bold' : 'text-slate-500'}\`}>{i}</span>}
+        <div key={i} className="absolute flex flex-col items-center" style={{ left: `${leftPct}%`, transform: 'translateX(-50%)' }}>
+          <div className={`h-4 w-0.5 ${isAxis ? 'bg-sky-400 h-6' : 'bg-slate-600'}`}></div>
+          {i % 5 === 0 && <span className={`text-xs mt-1 ${isAxis ? 'text-sky-400 font-bold' : 'text-slate-500'}`}>{i}</span>}
           
           {isTarget && (
             <div className="absolute -top-8 animate-bounce">
@@ -135,19 +135,18 @@ export default function DirectedNumberTug() {
             <div 
               className="absolute h-1 top-0 transition-all duration-500 ease-out z-10"
               style={{
-                left: \`\${Math.min(0, position) - MIN}%\`, // Wait, absolute positioning requires proper calc.
+                left: `${Math.min(0, position) - MIN}%`, // absolute positioning requires proper calc.
                 // width is from 0 to position.
-                // actually let's just draw a line from 0 to position.
               }}
             ></div>
             
             {/* Draw from 0 to position */}
             {position !== 0 && (
               <div 
-                className={\`absolute h-2 -top-0.5 rounded-full transition-all duration-500 \${position > 0 ? 'bg-emerald-500' : 'bg-rose-500'}\`}
+                className={`absolute h-2 -top-0.5 rounded-full transition-all duration-500 ${position > 0 ? 'bg-emerald-500' : 'bg-rose-500'}`}
                 style={{
-                  left: position > 0 ? '50%' : \`\${50 - (Math.abs(position)/(MAX-MIN))*100}%\`,
-                  width: \`\${(Math.abs(position)/(MAX-MIN))*100}%\`
+                  left: position > 0 ? '50%' : `${50 - (Math.abs(position)/(MAX-MIN))*100}%`,
+                  width: `${(Math.abs(position)/(MAX-MIN))*100}%`
                 }}
               ></div>
             )}
@@ -155,7 +154,7 @@ export default function DirectedNumberTug() {
             {/* Avatar / Current Position Marker */}
             <div 
               className="absolute -top-4 w-8 h-8 rounded-full border-4 border-slate-950 bg-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.6)] flex items-center justify-center transition-all duration-500 ease-out z-20"
-              style={{ left: \`\${((position - MIN) / (MAX - MIN)) * 100}%\`, transform: 'translateX(-50%)' }}
+              style={{ left: `${((position - MIN) / (MAX - MIN)) * 100}%`, transform: 'translateX(-50%)' }}
             >
               <div className="w-2 h-2 bg-white rounded-full"></div>
             </div>
@@ -164,7 +163,7 @@ export default function DirectedNumberTug() {
 
       </div>
 
-      <div className={\`p-4 rounded-xl text-center font-bold text-lg \${feedback.type === 'success' ? 'bg-emerald-950 text-emerald-400' : feedback.type === 'error' ? 'bg-rose-950 text-rose-400' : 'bg-slate-800 text-sky-400'}\`}>
+      <div className={`p-4 rounded-xl text-center font-bold text-lg ${feedback.type === 'success' ? 'bg-emerald-950 text-emerald-400' : feedback.type === 'error' ? 'bg-rose-950 text-rose-400' : 'bg-slate-800 text-sky-400'}`}>
          {feedback.msg}
       </div>
 
@@ -174,7 +173,7 @@ export default function DirectedNumberTug() {
             key={i}
             onClick={() => playCard(val, i)}
             disabled={position === target}
-            className={\`h-24 rounded-2xl flex flex-col items-center justify-center text-3xl font-black shadow-lg transition-all transform hover:-translate-y-2 hover:scale-105 active:scale-95 \${val > 0 ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-900/50' : 'bg-rose-600 hover:bg-rose-500 text-white shadow-rose-900/50'}\`}
+            className={`h-24 rounded-2xl flex flex-col items-center justify-center text-3xl font-black shadow-lg transition-all transform hover:-translate-y-2 hover:scale-105 active:scale-95 ${val > 0 ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-900/50' : 'bg-rose-600 hover:bg-rose-500 text-white shadow-rose-900/50'}`}
           >
             {val > 0 ? '+' : ''}{val}
             <span className="text-xs opacity-70 font-medium mt-1">{val > 0 ? 'Add' : 'Subtract'}</span>

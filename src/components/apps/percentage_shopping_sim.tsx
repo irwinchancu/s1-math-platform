@@ -49,7 +49,7 @@ export default function PercentageShoppingSim() {
       logProgress();
       setTimeout(generateItem, 2000);
     } else {
-      setFeedback({msg: \`Incorrect. Hint: \${originalPrice} × (1 - \${discountPercent}%) = ?\`, type: 'error'});
+      setFeedback({msg: `Incorrect. Hint: ${originalPrice} × (1 - ${discountPercent}%) = ?`, type: 'error'});
       setScore(s => Math.max(0, s - 20));
     }
   };
@@ -114,13 +114,13 @@ export default function PercentageShoppingSim() {
              <div className="h-6 w-full bg-slate-800 rounded-full overflow-hidden flex">
                 <div 
                   className="h-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-emerald-950 transition-all duration-500" 
-                  style={{ width: \`\${100 - discountPercent}%\` }}
+                  style={{ width: `${100 - discountPercent}%` }}
                 >
                   Selling Price
                 </div>
                 <div 
                   className="h-full bg-rose-500/20 flex items-center justify-center text-xs font-bold text-rose-400 transition-all duration-500 relative" 
-                  style={{ width: \`\${discountPercent}%\` }}
+                  style={{ width: `${discountPercent}%` }}
                 >
                    {/* Striped pattern overlay for discount part */}
                    <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 20px)' }}></div>
@@ -128,8 +128,8 @@ export default function PercentageShoppingSim() {
                 </div>
              </div>
              <div className="flex justify-between text-xs font-bold mt-2">
-                <span className="text-emerald-400 text-left w-full" style={{ width: \`\${100 - discountPercent}%\` }}>{100 - discountPercent}%</span>
-                <span className="text-rose-400 text-right w-full" style={{ width: \`\${discountPercent}%\` }}>{discountPercent}%</span>
+                <span className="text-emerald-400 text-left w-full" style={{ width: `${100 - discountPercent}%` }}>{100 - discountPercent}%</span>
+                <span className="text-rose-400 text-right w-full" style={{ width: `${discountPercent}%` }}>{discountPercent}%</span>
              </div>
           </div>
 
@@ -181,14 +181,14 @@ export default function PercentageShoppingSim() {
           </button>
 
           {feedback.type && (
-            <div className={\`mt-4 p-4 rounded-xl flex flex-col gap-1 animate-in slide-in-from-bottom-2 \${feedback.type === 'success' ? 'bg-emerald-950/50 border border-emerald-900' : 'bg-rose-950/50 border border-rose-900'}\`}>
+            <div className={`mt-4 p-4 rounded-xl flex flex-col gap-1 animate-in slide-in-from-bottom-2 ${feedback.type === 'success' ? 'bg-emerald-950/50 border border-emerald-900' : 'bg-rose-950/50 border border-rose-900'}`}>
               <div className="flex items-center gap-2">
                  {feedback.type === 'success' ? <CheckCircle2 className="text-emerald-500" /> : <XCircle className="text-rose-500" />}
-                 <span className={\`font-bold \${feedback.type === 'success' ? 'text-emerald-400' : 'text-rose-400'}\`}>
+                 <span className={`font-bold ${feedback.type === 'success' ? 'text-emerald-400' : 'text-rose-400'}`}>
                    {feedback.msg.split(' / ')[0]}
                  </span>
               </div>
-              <span className={\`text-sm ml-8 \${feedback.type === 'success' ? 'text-emerald-500/80' : 'text-rose-500/80'}\`}>
+              <span className={`text-sm ml-8 ${feedback.type === 'success' ? 'text-emerald-500/80' : 'text-rose-500/80'}`}>
                  {feedback.msg.split(' / ')[1]}
               </span>
             </div>
